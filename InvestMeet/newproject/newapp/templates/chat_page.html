@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+</style>
+</head>
+<body>
+
+    <nav class="navbar nav-text-white" style="position:relative; left:-80%; width:300% ">
+    <div class="container" style="border-radius:0px;display:flex; flex-direction: row; width:100%; background-color:#00c2cb; height:70px">
+        <!-- Brand and toggle get groupe for better mobile display -->
+        <div style="display:flex;" style="border-radius:0px;">
+            <img style="width:100%; height:100%; src="../images/investmeet.png">
+            <p style="color:#042444;position:relative;top:-10px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:x-large;left:60px;flex-grow:1; opacity:100%;font-size:30px;padding-right:30px">InvestMeet</p>
+        </div>
+        <div class="collapse navbar-collapse" id="topnavbar" style="position:relative;top:8px;">
+            <ul style = "display:flex; flex-direction: row; justify-content: left;  list-style: none;">
+                <li ><a href="index.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px; padding:10px; text-decoration:none">Home <span class="sr-only"></span></a></li>
+                <li><a href="aboutus.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding:10px; text-decoration:none;">About Us</a></li>
+                <li><a href="company_marketplace.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding:10px; text-decoration:none">Companies</a></li>
+                <li><a href="investors_marketplace.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding:10px; text-decoration:none">Investors</a></li>
+                <li><a href="company_compare.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding:10px; text-decoration:none">Compare</a></li>
+                <li><a href="contact_us.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding-left:10px;padding-right:250px; text-decoration:none">Contact Us</a></li>
+                <li><a href="signup_page.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding-right:-10px; padding-left:10px;padding-top:3px;padding-bottom:2px;text-decoration:none; background-color: white; border-radius:15px">Search</a></li>
+                <li><a href="member_login.html" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#042444; font-size: 25px;padding-left:20px; text-decoration:none">Log In</a></li>
+                <!--<li><img src="../images/profile.png" alt="image not found" width="50%"></a></li>-->
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<h2>Chat Messages</h2>
+
+<div class="container">
+  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <p>Hello. How are you today?</p>
+  <span class="time-right">11:00</span>
+</div>
+
+<div class="container darker">
+  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Hey! I'm fine. Thanks for asking!</p>
+  <span class="time-left">11:01</span>
+</div>
+
+<div class="container">
+  <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+  <p>Sweet! So, what do you wanna do today?</p>
+  <span class="time-right">11:02</span>
+</div>
+
+<div class="container darker">
+  <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right" style="width:100%;">
+  <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+  <span class="time-left">11:05</span>
+</div>
+
+</body>
+</html>

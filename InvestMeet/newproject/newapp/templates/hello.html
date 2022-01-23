@@ -1,0 +1,96 @@
+                                <input type="text" id="offer_title" value="{{ $offer_title ?? '' }}" name="name" placeholder="Offer Name" style="border:0;border-bottom: 2px solid lightgrey; background-color: transparent; width:100%; padding:10px;color:#042444"> 
+                                <br/>
+                                <br/>
+                                <textarea id="offer_description" rows="5" cols="80" name="description" placeholder="description" style="border:2px solid lightgrey; background-color: transparent; width:100%; padding:10px;color:#042444"> {{ $offer_description ?? ''}} </textarea> <br/> <br/>
+                                <textarea id="offer_description" rows="2" cols="80" name="description" placeholder="terms" style="border:2px solid lightgrey; background-color: transparent; width:100%; padding:10px;color:#042444"> {{ $offer_terms ?? ''}}</textarea> <br/>
+                                <label for="offer_type" value="Offer Type">Offer Type: </label>
+                                <select name="offer_type" id="offer_type" style="width:100%;border:2px solid lightgrey; background-color: transparent; padding:10px;color:#042444" onchange="show()">
+                                      <option id="data_share" value="Data Share">Data Share</option>
+                                      <option id="open_to_contact" value="Open to contact">Open to contact</option>
+                                      <option id="both" value = "Both of the above"> Both of the above </option>
+                                </select>
+                                <script>
+                                    $(document).ready(function(){
+                                        var data_price = "{{ $offer_data_share_price }}"
+                                        var open_price = "{{ $offer_open_to_contact_price }}"
+                                        if(data_price != "0" && open_price != "0"){
+                                            $("#offer_type").val("Both of the above")
+                                        }
+                                        else if(open_price == "0"){
+                                            $("#offer_type").val("Data Share")
+                                        }
+                                        else if(data_price == "0"){
+                                            $("#offer_type").val("Open to contact")
+                                        }
+                                        $("#offer_type").trigger("change");
+                                        var compensation = "{{ $offer_mechanism}}"
+                                        if(compensation == "1"){
+                                            $('#offer_mechanism').val("Monetary Compensation");
+                                        }
+                                        else if(compensation == "2"){
+                                            $('#offer_mechanism').val("Identity Wallet Discount Coupon (Percent Off)");
+                                        }
+                                        $("#offer_mechanism").trigger("change");
+                                        var end = "{{ $offer_end}}"
+                                        var start = "{{ $offer_start}}"
+
+                                        var startDate = start.substring(0, start.indexOf(" "))+ "T" + start.substring(start.indexOf(" ") + 1, start.length-3);
+                                        var endDate = end.substring(0, end.indexOf(" ")) + "T" + end.substring(end.indexOf(" ") + 1, end.length-3);
+                                        document.getElementById("offer_start").value = startDate;
+                                        document.getElementById("offer_end").value = endDate;
+                                    })
+                                </script>
+                                <label id="label_offer_mechanism" >Offer Mechanism: </label>
+                                <select name="offerTypes" id="offer_mechanism" style="width:100%;border:2px solid lightgrey; background-color: transparent; padding:10px;color:#042444">
+                                    <option value="Monetary Compensation">Monetary Compensation</option>
+                                    <option value="Identity Wallet Discount Coupon (Percent Off)">Identity Wallet Discount Coupon (Percent Off)</option>
+                                    <option value="Identity Wallet Discount Coupon (Money Off)">Identity Wallet Discount Coupon (Money Off)</option>
+                                </select>
+                                <script>
+                                    function show(){
+                                        var select = $('#offer_type').val();
+                                        console.log(select);
+                                        if(select == "Data Share"){
+                                            document.getElementById('open_to_contact_price').style.display = "none"
+                                            document.getElementById('open_to_contact_price_label').style.display = "none"
+                                            document.getElementById('data_share_price').style.display = "inline"
+                                            document.getElementById('label_data_share_price').style.display = "inline"
+                                            $('#data_share_price').val("{{ $offer_data_share_price }}");
+                                        }
+                                        else if(select == "Open to contact"){
+                                            document.getElementById('open_to_contact_price').style.display = "inline"
+                                            document.getElementById('open_to_contact_price_label').style.display = "inline"
+                                            document.getElementById('data_share_price').style.display = "none"
+                                            document.getElementById('label_data_share_price').style.display = "none"
+                                            $('#open_to_contact_price').val("{{ $offer_open_to_contact_price }}");
+                                        }
+                                        else{
+                                            document.getElementById('open_to_contact_price').style.display = "inline"
+                                            document.getElementById('open_to_contact_price_label').style.display = "inline"
+                                            document.getElementById('data_share_price').style.display = "inline"
+                                            document.getElementById('label_data_share_price').style.display = "inline"
+                                            $('#data_share_price').val("{{ $offer_data_share_price }}");
+                                            $('#open_to_contact_price').val("{{ $offer_open_to_contact_price }}");
+                                        }
+                                    }
+                                </script>
+                                <label for="Open To Contact Price" id="open_to_contact_price_label">Open To Contact price: </label>
+                                <input type="text" id="open_to_contact_price" style="border:0;border-bottom: 2px solid lightgrey; background-color: transparent; width:20%; padding:10px;color:#042444; display:inline"/>
+                                <label for="Data Sharing Price" id="label_data_share_price">Data Share Price: </label>
+                                <input type="text" name="Data Sharing Price" id="data_share_price" style="border:0;border-bottom: 2px solid lightgrey; background-color: transparent; width:20%; padding:10px;color:#042444; display:inline"/>
+                                <br></br>
+                                <label for="backgroundImage" value="Background Image"> Upload offer background image</label>
+                                <input type="file" id="offer_imagepath" text="{{ $offer_imagepath }}" style="width:100%;border:2px solid lightgrey; background-color: transparent; padding:10px;color:#042444">
+                                <br/>
+                                <label for="start_offer">Start Date: </label>
+                                <input type="datetime-local" id="offer_start" style="width:40%;border:2px solid lightgrey; background-color: transparent; padding:10px;color:#042444">
+                                <br/>
+                                <br/>
+                                <label for="end_offer">Finish Date: </label>
+                                <input type="datetime-local" id="offer_end" value=""style="width:40%;border:2px solid lightgrey; background-color: transparent; padding:10px;color:#042444" onchange="print()">
+                                <script>
+                                    function print(){
+                                        console.log(document.getElementById("offer_end").value)
+                                    }
+                                </script>
+                                <br/>
